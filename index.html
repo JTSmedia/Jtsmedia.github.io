@@ -155,7 +155,19 @@
   .form-textarea { min-height: 120px; }
   .form-submit { width: 100%; background: rgba(255,255,255,0.1); color: var(--white); font-family: var(--ff-sans); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 17px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: background 0.2s; margin-top: 4px; }
   .form-submit:hover { background: rgba(255,255,255,0.18); }
-  .form-note { font-size: 0.73rem; color: rgba(245,245,240,0.2); margin-top: 12px; line-height: 1.6; text-align: center; }
+  .contact-cta-card { border: 1px solid rgba(255,255,255,0.1); padding: 44px 40px; }
+  .cta-card-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,240,0.3); margin-bottom: 20px; }
+  .cta-card-hed { font-family: var(--ff-serif); font-size: clamp(1.6rem, 2.5vw, 2.1rem); font-weight: normal; line-height: 1.2; margin-bottom: 18px; }
+  .cta-card-body { font-size: 0.9rem; color: rgba(245,245,240,0.5); line-height: 1.8; margin-bottom: 32px; }
+  .cta-card-btn { display: block; text-align: center; background: var(--white); color: var(--black); font-family: var(--ff-sans); font-size: 0.8rem; letter-spacing: 0.13em; text-transform: uppercase; padding: 18px 24px; text-decoration: none; transition: background 0.2s; }
+  .cta-card-btn:hover { background: #d8d8d0; }
+  .cta-card-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 32px 0; }
+  .cta-card-reach { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,245,240,0.25); margin-bottom: 18px; }
+  .cta-contact-items { display: flex; flex-direction: column; gap: 12px; }
+  .cta-contact-item { display: flex; align-items: baseline; gap: 16px; text-decoration: none; transition: opacity 0.2s; }
+  .cta-contact-item:hover { opacity: 0.8; }
+  .cta-ci-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,245,240,0.25); min-width: 46px; }
+  .cta-ci-val { font-size: 0.95rem; color: rgba(245,245,240,0.75); }
 
   /* FOOTER */
   footer { border-top: 1px solid rgba(255,255,255,0.08); background: var(--black); color: rgba(245,245,240,0.25); padding: 32px 0; }
@@ -438,32 +450,35 @@
           </div>
         </div>
         <a class="calendly-btn" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">
-          → Book a Free Discovery Call via Calendly
+          Book a Free 15-Minute Discovery Call →
         </a>
       </div>
 
       <div class="contact-right">
-        <div class="or-divider" style="margin-top:0; margin-bottom: 28px;">Or send a message</div>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
-          <div class="form-group">
-            <label class="form-label" for="name">Full Name</label>
-            <input class="form-input" id="name" type="text" placeholder="Your name" required />
+        <div class="contact-cta-card">
+          <p class="cta-card-label">Start Here</p>
+          <h3 class="cta-card-hed">Book a Free<br>15-Minute Discovery Call</h3>
+          <p class="cta-card-body">
+            A focused, no-obligation conversation to explore your communication challenges
+            and find out whether a workshop or bespoke programme is the right fit.
+            No hard sell — just clarity.
+          </p>
+          <a class="cta-card-btn" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">
+            Book Your Free Call →
+          </a>
+          <div class="cta-card-divider"></div>
+          <p class="cta-card-reach">Prefer to reach out directly?</p>
+          <div class="cta-contact-items">
+            <a class="cta-contact-item" href="mailto:jay@jaythakkarshow.co.uk">
+              <span class="cta-ci-label">Email</span>
+              <span class="cta-ci-val">jay@jaythakkarshow.co.uk</span>
+            </a>
+            <a class="cta-contact-item" href="tel:+447464471216">
+              <span class="cta-ci-label">Phone</span>
+              <span class="cta-ci-val">+44 7464 471 216</span>
+            </a>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="org">Organisation</label>
-            <input class="form-input" id="org" type="text" placeholder="Company or institution" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="email">Email Address</label>
-            <input class="form-input" id="email" type="email" placeholder="your@email.com" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="message">Your Enquiry</label>
-            <textarea class="form-textarea" id="message" placeholder="Tell me about your communication challenge or the workshop you have in mind…" required></textarea>
-          </div>
-          <button class="form-submit" type="submit">Send Enquiry →</button>
-          <p class="form-note">Your information is handled with strict confidentiality and will never be shared.</p>
-        </form>
+        </div>
       </div>
     </div>
   </div>
