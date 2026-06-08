@@ -7,116 +7,94 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --black: #0a0a0a;
-    --white: #f5f5f0;
-    --mid:   #6b6b6b;
-    --rule:  #d0d0c8;
-    --ff-serif: 'Georgia', 'Times New Roman', serif;
-    --ff-sans:  'Helvetica Neue', Arial, sans-serif;
-    --max: 1080px;
-    --gap: clamp(60px, 10vw, 110px);
+    --black: #0a0a0a; --white: #f5f5f0; --mid: #6b6b6b; --rule: #d0d0c8;
+    --ff-serif: 'Georgia','Times New Roman',serif;
+    --ff-sans: 'Helvetica Neue',Arial,sans-serif;
+    --max: 1080px; --gap: clamp(60px,10vw,110px);
   }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--white); color: var(--black);
-    font-family: var(--ff-sans); font-size: 16px;
-    line-height: 1.7; -webkit-font-smoothing: antialiased;
-  }
-  .container { max-width: var(--max); margin: 0 auto; padding: 0 clamp(20px, 5vw, 60px); }
+  body { background: var(--white); color: var(--black); font-family: var(--ff-sans); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 clamp(20px,5vw,60px); }
   .rule { border: none; border-top: 1px solid var(--rule); }
+  .section-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 48px; display: flex; align-items: center; gap: 16px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+  section { padding: var(--gap) 0; }
 
   /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(245,245,240,0.94); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--rule);
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(245,245,240,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .nav-logo { font-family: var(--ff-serif); font-size: 1.05rem; font-weight: normal; letter-spacing: 0.02em; color: var(--black); text-decoration: none; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--black); }
-  .nav-cta { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--black); color: var(--white); border: none; cursor: pointer; padding: 10px 22px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 10px 22px; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
   .nav-cta:hover { background: #333; }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
   .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--black); }
 
   /* HERO */
-  #hero {
-    min-height: 100vh; display: grid; place-items: center;
-    padding: calc(64px + var(--gap)) clamp(20px,5vw,60px) var(--gap);
-    background: var(--black); color: var(--white); text-align: center;
-    position: relative; overflow: hidden;
-  }
-  #hero::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.03) 79px, rgba(255,255,255,0.03) 80px);
-  }
+  #hero { min-height: 100vh; display: grid; place-items: center; padding: calc(64px + var(--gap)) clamp(20px,5vw,60px) var(--gap); background: var(--black); color: var(--white); text-align: center; position: relative; overflow: hidden; }
+  #hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,0.03) 79px,rgba(255,255,255,0.03) 80px); }
   .hero-inner { position: relative; max-width: 820px; }
   .hero-label { display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,240,0.45); margin-bottom: 32px; border: 1px solid rgba(245,245,240,0.15); padding: 7px 18px; }
-  .hero-h1 { font-family: var(--ff-serif); font-size: clamp(2.4rem, 6vw, 4.6rem); font-weight: normal; line-height: 1.18; letter-spacing: -0.01em; color: var(--white); margin-bottom: 28px; }
-  .hero-h1 em { font-style: italic; color: rgba(245,245,240,0.6); }
-  .hero-sub { font-size: clamp(0.92rem, 1.5vw, 1.05rem); color: rgba(245,245,240,0.55); max-width: 540px; margin: 0 auto 48px; line-height: 1.8; }
+  .hero-h1 { font-family: var(--ff-serif); font-size: clamp(2.4rem,6vw,4.6rem); font-weight: normal; line-height: 1.18; letter-spacing: -0.01em; margin-bottom: 28px; }
+  .hero-h1 em { font-style: italic; color: rgba(245,245,240,0.55); }
+  .hero-sub { font-size: clamp(0.92rem,1.5vw,1.05rem); color: rgba(245,245,240,0.55); max-width: 560px; margin: 0 auto 48px; line-height: 1.85; }
   .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   .btn-primary { background: var(--white); color: var(--black); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 16px 36px; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
   .btn-primary:hover { background: #d8d8d0; }
-  .btn-ghost { background: transparent; color: rgba(245,245,240,0.65); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 15px 32px; border: 1px solid rgba(245,245,240,0.2); cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s, color 0.2s; }
+  .btn-ghost { background: transparent; color: rgba(245,245,240,0.65); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 15px 32px; border: 1px solid rgba(245,245,240,0.2); cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s,color 0.2s; }
   .btn-ghost:hover { border-color: rgba(245,245,240,0.6); color: var(--white); }
   .hero-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(245,245,240,0.25); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
-  .scroll-line { width: 1px; height: 40px; background: rgba(245,245,240,0.2); animation: scrollPulse 2s ease-in-out infinite; }
-  @keyframes scrollPulse { 0%,100%{opacity:.2} 50%{opacity:.7} }
+  .scroll-line { width: 1px; height: 40px; background: rgba(245,245,240,0.2); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:.2} 50%{opacity:.7} }
 
-  /* SECTION SHARED */
-  section { padding: var(--gap) 0; }
-  .section-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 48px; display: flex; align-items: center; gap: 16px; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
-
-  /* NUMBERS STRIP */
+  /* NUMBERS */
   #numbers { background: var(--black); color: var(--white); padding: 52px 0; }
-  .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: rgba(255,255,255,0.08); }
+  .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: rgba(255,255,255,0.08); }
   .stat { background: var(--black); padding: 36px 30px; text-align: center; }
-  .stat-n { font-family: var(--ff-serif); font-size: clamp(1.7rem, 3.5vw, 2.7rem); display: block; margin-bottom: 6px; line-height: 1.1; }
+  .stat-n { font-family: var(--ff-serif); font-size: clamp(1.7rem,3.5vw,2.7rem); display: block; margin-bottom: 6px; line-height: 1.1; }
   .stat-l { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,245,240,0.4); }
 
   /* ABOUT */
   #about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .about-left { position: sticky; top: 88px; }
-  .about-hed { font-family: var(--ff-serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: normal; line-height: 1.25; margin-bottom: 28px; }
+  .about-hed { font-family: var(--ff-serif); font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: normal; line-height: 1.25; margin-bottom: 28px; }
   .about-hed em { font-style: italic; color: var(--mid); }
-  .about-desc { color: var(--mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 28px; }
+  .about-desc { color: var(--mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 24px; }
   .credential { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-top: 1px solid var(--rule); }
   .credential:last-child { border-bottom: 1px solid var(--rule); }
   .cred-icon { font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; color: var(--mid); }
-  .cred-text { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+  .cred-text { font-size: 0.88rem; color: var(--mid); line-height: 1.65; }
   .cred-text strong { color: var(--black); font-weight: 600; }
 
   /* Philosophy card */
   .philosophy-card { background: var(--black); color: var(--white); padding: 40px; margin-bottom: 24px; }
   .philo-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,240,0.35); margin-bottom: 18px; }
   .philo-hed { font-family: var(--ff-serif); font-size: 1.3rem; font-weight: normal; line-height: 1.35; margin-bottom: 14px; }
-  .philo-body { font-size: 0.88rem; color: rgba(245,245,240,0.58); line-height: 1.8; margin-bottom: 14px; }
+  .philo-body { font-size: 0.88rem; color: rgba(245,245,240,0.58); line-height: 1.85; margin-bottom: 14px; }
   .philo-body:last-child { margin-bottom: 0; }
 
   /* Guest strip */
   .guest-strip { border: 1px solid var(--rule); padding: 28px 32px; }
   .guest-strip-label { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
   .guest-list { display: flex; flex-direction: column; gap: 12px; }
-  .guest-item { display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem; }
-  .guest-item::before { content: ''; display: block; width: 20px; height: 1px; background: var(--rule); flex-shrink: 0; margin-top: 10px; }
-  .guest-name { font-weight: 600; color: var(--black); }
+  .guest-item { display: flex; align-items: flex-start; gap: 12px; }
+  .guest-item::before { content: ''; display: block; width: 20px; height: 1px; background: var(--rule); flex-shrink: 0; margin-top: 11px; }
+  .guest-name { font-weight: 600; color: var(--black); font-size: 0.88rem; }
   .guest-title { color: var(--mid); font-size: 0.82rem; }
 
   /* SERVICES */
   #services { background: #f0f0eb; }
-  .services-intro { max-width: 620px; margin-bottom: 64px; }
-  .services-hed { font-family: var(--ff-serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: normal; line-height: 1.25; margin-bottom: 16px; }
-  .services-sub { color: var(--mid); font-size: 0.97rem; line-height: 1.8; }
-  .workshops-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; background: var(--rule); margin-bottom: 48px; }
+  .services-intro { max-width: 640px; margin-bottom: 64px; }
+  .services-hed { font-family: var(--ff-serif); font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: normal; line-height: 1.25; margin-bottom: 16px; }
+  .services-sub { color: var(--mid); font-size: 0.97rem; line-height: 1.85; }
+  .workshops-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2px; background: var(--rule); margin-bottom: 48px; }
   .workshop-card { background: #f0f0eb; padding: 36px 32px; transition: background 0.2s; }
   .workshop-card:hover { background: var(--white); }
   .wk-num { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 20px; display: block; }
   .wk-title { font-family: var(--ff-serif); font-size: 1.15rem; font-weight: normal; line-height: 1.35; margin-bottom: 12px; }
-  .wk-body { font-size: 0.87rem; color: var(--mid); line-height: 1.75; margin-bottom: 20px; }
+  .wk-body { font-size: 0.87rem; color: var(--mid); line-height: 1.8; margin-bottom: 20px; }
   .wk-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--rule); padding: 4px 10px; color: var(--mid); }
   .audience-strip { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 28px 32px; border: 1px solid var(--rule); background: var(--white); }
@@ -124,50 +102,34 @@
   .audience-pill { background: var(--black); color: var(--white); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; }
 
   /* PROCESS */
-  .process-hed { font-family: var(--ff-serif); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: normal; line-height: 1.3; max-width: 560px; margin-bottom: 64px; }
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid var(--rule); }
+  .process-hed { font-family: var(--ff-serif); font-size: clamp(1.6rem,3vw,2.4rem); font-weight: normal; line-height: 1.3; max-width: 580px; margin-bottom: 64px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); border-top: 1px solid var(--rule); }
   .step { padding: 40px 36px 40px 0; border-right: 1px solid var(--rule); }
   .step:last-child { border-right: none; }
   .step-num { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-bottom: 20px; display: block; }
   .step-title { font-family: var(--ff-serif); font-size: 1.05rem; font-weight: normal; margin-bottom: 10px; }
-  .step-body { font-size: 0.87rem; color: var(--mid); line-height: 1.75; }
+  .step-body { font-size: 0.87rem; color: var(--mid); line-height: 1.75; margin-bottom: 20px; }
+  .step-btn { display: inline-block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 10px 20px; text-decoration: none; transition: background 0.2s; }
+  .step-btn:hover { background: #333; }
 
   /* CONTACT */
   #contact { background: var(--black); color: var(--white); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .contact-hed { font-family: var(--ff-serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: normal; line-height: 1.2; margin-bottom: 24px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .contact-hed { font-family: var(--ff-serif); font-size: clamp(2rem,4vw,3.2rem); font-weight: normal; line-height: 1.2; margin-bottom: 24px; }
   .contact-hed em { font-style: italic; color: rgba(245,245,240,0.4); }
-  .contact-sub { color: rgba(245,245,240,0.5); font-size: 0.95rem; line-height: 1.8; margin-bottom: 32px; }
-  .contact-details { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
-  .contact-detail { display: flex; gap: 14px; align-items: flex-start; font-size: 0.88rem; color: rgba(245,245,240,0.45); }
-  .contact-detail span:first-child { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,245,240,0.25); min-width: 60px; margin-top: 2px; }
-  .calendly-btn { display: inline-block; width: 100%; text-align: center; background: var(--white); color: var(--black); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 17px 24px; text-decoration: none; font-family: var(--ff-sans); transition: background 0.2s; }
-  .calendly-btn:hover { background: #d8d8d0; }
-  .or-divider { display: flex; align-items: center; gap: 14px; color: rgba(245,245,240,0.2); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; margin: 28px 0; }
-  .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
-
-  .contact-form { display: flex; flex-direction: column; }
-  .form-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,245,240,0.3); display: block; margin-bottom: 8px; }
-  .form-group { margin-bottom: 18px; }
-  .form-input, .form-textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--white); font-family: var(--ff-sans); font-size: 0.95rem; padding: 14px 16px; outline: none; transition: border-color 0.2s; resize: none; }
-  .form-input:focus, .form-textarea:focus { border-color: rgba(255,255,255,0.4); }
-  .form-input::placeholder, .form-textarea::placeholder { color: rgba(245,245,240,0.2); }
-  .form-textarea { min-height: 120px; }
-  .form-submit { width: 100%; background: rgba(255,255,255,0.1); color: var(--white); font-family: var(--ff-sans); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 17px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: background 0.2s; margin-top: 4px; }
-  .form-submit:hover { background: rgba(255,255,255,0.18); }
-  .contact-cta-card { border: 1px solid rgba(255,255,255,0.1); padding: 44px 40px; }
+  .contact-sub { color: rgba(245,245,240,0.5); font-size: 0.95rem; line-height: 1.8; margin-bottom: 36px; }
+  .contact-details { display: flex; flex-direction: column; gap: 14px; }
+  .contact-detail { display: flex; align-items: baseline; gap: 16px; text-decoration: none; transition: opacity 0.2s; }
+  .contact-detail:hover { opacity: 0.75; }
+  .cd-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,245,240,0.25); min-width: 52px; }
+  .cd-val { font-size: 0.92rem; color: rgba(245,245,240,0.7); }
+  .contact-cta-card { border: 1px solid rgba(255,255,255,0.1); padding: 50px 44px; text-align: center; }
   .cta-card-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,240,0.3); margin-bottom: 20px; }
-  .cta-card-hed { font-family: var(--ff-serif); font-size: clamp(1.6rem, 2.5vw, 2.1rem); font-weight: normal; line-height: 1.2; margin-bottom: 18px; }
-  .cta-card-body { font-size: 0.9rem; color: rgba(245,245,240,0.5); line-height: 1.8; margin-bottom: 32px; }
-  .cta-card-btn { display: block; text-align: center; background: var(--white); color: var(--black); font-family: var(--ff-sans); font-size: 0.8rem; letter-spacing: 0.13em; text-transform: uppercase; padding: 18px 24px; text-decoration: none; transition: background 0.2s; }
+  .cta-card-hed { font-family: var(--ff-serif); font-size: clamp(1.6rem,2.5vw,2.2rem); font-weight: normal; line-height: 1.2; margin-bottom: 18px; }
+  .cta-card-body { font-size: 0.9rem; color: rgba(245,245,240,0.5); line-height: 1.8; margin-bottom: 36px; max-width: 360px; margin-left: auto; margin-right: auto; }
+  .cta-card-btn { display: block; background: var(--white); color: var(--black); font-family: var(--ff-sans); font-size: 0.82rem; letter-spacing: 0.13em; text-transform: uppercase; padding: 20px 28px; text-decoration: none; transition: background 0.2s; }
   .cta-card-btn:hover { background: #d8d8d0; }
-  .cta-card-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 32px 0; }
-  .cta-card-reach { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,245,240,0.25); margin-bottom: 18px; }
-  .cta-contact-items { display: flex; flex-direction: column; gap: 12px; }
-  .cta-contact-item { display: flex; align-items: baseline; gap: 16px; text-decoration: none; transition: opacity 0.2s; }
-  .cta-contact-item:hover { opacity: 0.8; }
-  .cta-ci-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,245,240,0.25); min-width: 46px; }
-  .cta-ci-val { font-size: 0.95rem; color: rgba(245,245,240,0.75); }
+  .cta-card-note { margin-top: 14px; font-size: 0.73rem; color: rgba(245,245,240,0.2); letter-spacing: 0.05em; }
 
   /* FOOTER */
   footer { border-top: 1px solid rgba(255,255,255,0.08); background: var(--black); color: rgba(245,245,240,0.25); padding: 32px 0; }
@@ -211,18 +173,17 @@
   <div class="hero-inner">
     <span class="hero-label">B2B Media &amp; Communication Consultancy</span>
     <h1 class="hero-h1">
-      Bridging the Gap Between<br>
-      <em>Complex Ideas</em> and<br>
-      Public Impact
+      Your Ideas Are Powerful.<br>
+      <em>Most People Just Can't Hear Them Yet.</em>
     </h1>
     <p class="hero-sub">
-      Rigorous storytelling frameworks. AI-integrated workflows. Training and workshops
-      that transform how organisations, academics, and emerging leaders communicate
-      what they do — and why it matters.
+      Jay Thakkar helps universities, SMEs, and postgraduates turn complex thinking
+      into clear, compelling communication — using storytelling frameworks and
+      AI-integrated workflows that cost next to nothing to implement.
     </p>
     <div class="hero-actions">
-      <a class="btn-primary" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Training Workshop</a>
-      <a class="btn-ghost" href="#services">Explore Services</a>
+      <a class="btn-primary" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Free Discovery Call</a>
+      <a class="btn-ghost" href="#services">See What's Possible</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -231,14 +192,14 @@
   </div>
 </section>
 
-<!-- NUMBERS STRIP -->
+<!-- NUMBERS -->
 <div id="numbers">
   <div class="container">
     <div class="numbers-grid">
       <div class="stat"><span class="stat-n">6</span><span class="stat-l">Years Broadcasting</span></div>
-      <div class="stat"><span class="stat-n">Top 40</span><span class="stat-l">India, 2022</span></div>
-      <div class="stat"><span class="stat-n">Top 100</span><span class="stat-l">3 Countries, 2023</span></div>
-      <div class="stat"><span class="stat-n">World-Class</span><span class="stat-l">Academic &amp; Industry Guests</span></div>
+      <div class="stat"><span class="stat-n">Top 40</span><span class="stat-l">India — 2022</span></div>
+      <div class="stat"><span class="stat-n">Top 100</span><span class="stat-l">3 Countries — 2023</span></div>
+      <div class="stat"><span class="stat-n">Zero</span><span class="stat-l">Paid Ads. No Agency. No Studio.</span></div>
     </div>
   </div>
 </div>
@@ -250,51 +211,52 @@
     <div class="about-grid">
 
       <div class="about-left">
-        <h2 class="about-hed">Intellectual depth.<br><em>Commercial clarity.</em></h2>
+        <h2 class="about-hed">Proof that the right<br><em>framework beats budget.</em></h2>
         <p class="about-desc">
-          Jay Thakkar occupies a rare intersection: the rigour of academic philosophy and the practical
-          demands of media and public communication. Through the <strong>Jay Thakkar Show</strong>, he
-          built a platform that brought world-class intellectual discourse to broad audiences —
-          ranked in the <strong>top 40 in India (2022)</strong> and <strong>top 100 across three
-          countries (2023)</strong>.
+          Jay Thakkar built the <strong>Jay Thakkar Show</strong> from zero — no studio, no production team,
+          no marketing spend — into a podcast ranked in the <strong>top 40 in India (2022)</strong> and
+          <strong>top 100 across three countries (2023)</strong>. The guests were world-class.
+          The cost was near zero. The only unfair advantage was knowing exactly what to say, how to say it,
+          and how to build a workflow that runs itself.
         </p>
         <p class="about-desc">
-          That experience now powers a consultancy built for organisations that need to communicate
-          complex, high-value ideas without losing their edge.
+          That is precisely what this consultancy delivers: the same results-first thinking,
+          adapted for your organisation. No inflated agency retainers. No expensive tooling.
+          Just the frameworks, the strategy, and the hands-on guidance to make it work.
         </p>
 
         <div class="credential">
           <span class="cred-icon">◈</span>
-          <p class="cred-text"><strong>Founder, Jay Thakkar Show</strong> — 6 years, top 40 India (2022), top 100 in three countries (2023), featuring leading global academics, executives, and thinkers.</p>
+          <p class="cred-text"><strong>Founder, Jay Thakkar Show</strong> — Built a globally ranked podcast from scratch with minimal budget, proving that strategy and storytelling outperform spend every time.</p>
         </div>
         <div class="credential">
           <span class="cred-icon">◈</span>
-          <p class="cred-text"><strong>Certified Life Coach</strong> — Individual and organisational transformation through structured narrative and mindset frameworks.</p>
+          <p class="cred-text"><strong>AI Workflow Specialist</strong> — Guides business owners and teams in training AI tools (including free versions) to handle communication tasks intelligently, without adding headcount or cost.</p>
         </div>
         <div class="credential">
           <span class="cred-icon">◈</span>
-          <p class="cred-text"><strong>Communication Strategist</strong> — Helping SMEs, academics, and postgraduates unlock their authority through storytelling and AI-integrated workflows.</p>
+          <p class="cred-text"><strong>Framework Over Budget</strong> — Reached a global audience with no studio, no paid promotion, and no agency — proof that the right communication framework consistently outperforms spend. This is the core principle behind every client engagement.</p>
         </div>
       </div>
 
       <div class="about-right">
         <div class="philosophy-card">
-          <p class="philo-label">Intellectual Framework</p>
-          <h3 class="philo-hed">Storytelling + AI: The Modern Communication Advantage</h3>
+          <p class="philo-label">The Core Belief</p>
+          <h3 class="philo-hed">Storytelling Is the Highest-Leverage Skill You're Not Teaching Your Team</h3>
           <p class="philo-body">
-            The most underestimated competitive edge for any organisation — academic or commercial —
-            is the ability to tell a compelling story. Storytelling is not a soft skill. It is the
-            architecture through which ideas gain traction, audiences are persuaded, and brands are built.
+            Whether you're a postgrad trying to communicate your research, an SME owner posting on LinkedIn,
+            or a university department building its public profile — the bottleneck is never effort.
+            It's always story. The ability to frame an idea so clearly that the right person acts on it immediately.
           </p>
           <p class="philo-body">
-            By integrating AI into communication workflows, organisations can dramatically amplify
-            the reach and consistency of their storytelling — without increasing headcount or expenditure.
-            The result is a leaner, more intelligent content and communication operation that does more
-            with what already exists.
+            Pair that with AI tools — most of them free — integrated into your existing workflow,
+            and you get a communication operation that produces more, reaches further, and costs
+            significantly less than what you're spending right now. No new hires. No agencies.
+            Just a smarter system, built around your voice.
           </p>
           <p class="philo-body">
-            Whether you are a business owner, an SME leader, or an academic making the case for your
-            research — mastering storytelling is the single highest-leverage skill you can develop.
+            This is not theory. Jay ranked a podcast in the global top 100 doing exactly this.
+            The workshop teaches you how to replicate that thinking in your own context.
           </p>
         </div>
 
@@ -310,7 +272,7 @@
             <div class="guest-item">
               <div>
                 <div class="guest-name">Eric Kaplan</div>
-                <div class="guest-title">Executive Producer, The Big Bang Theory · Author &amp; Harvard-trained Philosopher</div>
+                <div class="guest-title">Executive Producer, The Big Bang Theory · Harvard-trained Philosopher &amp; Author</div>
               </div>
             </div>
             <div class="guest-item">
@@ -340,54 +302,81 @@
   <div class="container">
     <p class="section-label">Services</p>
     <div class="services-intro">
-      <h2 class="services-hed">Training &amp; Workshops<br>That Change How You Communicate</h2>
+      <h2 class="services-hed">Three Ways to Work Together</h2>
       <p class="services-sub">
-        Bespoke programmes designed for SMEs, academics, and postgraduates who need to master
-        the art of storytelling and broadcasting — without losing intellectual credibility.
-        Every workshop is structured around proven frameworks, not improvisation.
+        Every engagement starts with a 15-minute call and ends with a clear outcome.
+        Whether you need a workshop for your team, an honest audit of your current
+        communication, or ongoing strategic support — there is a structured path for each.
       </p>
     </div>
 
     <div class="workshops-grid">
+
       <div class="workshop-card">
-        <span class="wk-num">01 — Core Workshop</span>
-        <h3 class="wk-title">Storytelling Architecture for Complex Ideas</h3>
+        <span class="wk-num">01 — Primary Service</span>
+        <h3 class="wk-title">Storytelling Workshops &amp; Training</h3>
         <p class="wk-body">
-          Structure nuanced, technical, or academic content into narratives that resonate with
-          non-specialist audiences — without dumbing down. Learn the frameworks used by the
-          world's most effective communicators, adapted for your context.
+          Your team or department will leave with one thing they didn't walk in with:
+          the ability to frame any idea — however complex — in a way that makes people stop,
+          listen, and act. Designed for social media teams who aren't getting traction,
+          postgrads who can't communicate their research to non-specialists, and university
+          departments that struggle to translate academic value into public relevance.
+          Delivered in-person or remotely. Half-day or full-day format.
         </p>
-        <div class="wk-tags"><span class="tag">SMEs</span><span class="tag">Academics</span><span class="tag">Postgraduates</span></div>
+        <div class="wk-tags">
+          <span class="tag">Universities</span>
+          <span class="tag">SMEs</span>
+          <span class="tag">Social Media Teams</span>
+          <span class="tag">Postgraduates</span>
+        </div>
       </div>
+
       <div class="workshop-card">
-        <span class="wk-num">02 — Advanced Workshop</span>
-        <h3 class="wk-title">Broadcasting Mastery &amp; Thought Leadership</h3>
+        <span class="wk-num">02 — Audit &amp; Integration</span>
+        <h3 class="wk-title">Media Audit with AI Workflow Integration</h3>
         <p class="wk-body">
-          From interview technique to panel presence, media engagement, and public speaking —
-          develop a broadcasting voice that is authoritative, confident, and unmistakably yours.
-          Grounded in six years of high-level media production.
+          Before you create more content, find out why the content you're already creating
+          isn't working. This service audits your existing communication channels, identifies
+          exactly where the breakdown is happening, and builds a practical AI-integrated
+          workflow — using free tools your team already has access to — so you can produce
+          smarter output without increasing budget or headcount. Includes hands-on training
+          for your team on how to prompt, train, and manage AI tools for your specific voice.
         </p>
-        <div class="wk-tags"><span class="tag">Media</span><span class="tag">Public Speaking</span><span class="tag">B2B</span></div>
+        <div class="wk-tags">
+          <span class="tag">SMEs</span>
+          <span class="tag">Teams</span>
+          <span class="tag">AI Integration</span>
+          <span class="tag">Workflow</span>
+        </div>
       </div>
+
       <div class="workshop-card">
-        <span class="wk-num">03 — AI Integration Workshop</span>
-        <h3 class="wk-title">AI-Powered Communication Workflows</h3>
+        <span class="wk-num">03 — Ongoing Support</span>
+        <h3 class="wk-title">Bespoke Consultancy &amp; Strategic Guidance</h3>
         <p class="wk-body">
-          Learn how to embed AI tools into your content and communication strategy to multiply
-          output without multiplying cost. Produce more, spend less — and maintain the human
-          storytelling intelligence that makes the difference.
+          For organisations that need more than a one-off workshop — ongoing strategic
+          communication support, built entirely around your goals, your sector, and your
+          capacity. Engagements are scoped on a case-by-case basis following the discovery
+          process. Where full consultancy is not the right fit, trusted agency partners
+          are introduced with a warm handover.
         </p>
-        <div class="wk-tags"><span class="tag">SMEs</span><span class="tag">Teams</span><span class="tag">Institutions</span></div>
+        <div class="wk-tags">
+          <span class="tag">Ongoing</span>
+          <span class="tag">Bespoke</span>
+          <span class="tag">Strategic</span>
+          <span class="tag">Leadership</span>
+        </div>
       </div>
+
     </div>
 
     <div class="audience-strip">
-      <span class="audience-label">Designed for</span>
+      <span class="audience-label">Built for</span>
+      <span class="audience-pill">Universities</span>
       <span class="audience-pill">SMEs</span>
-      <span class="audience-pill">Academic Departments</span>
+      <span class="audience-pill">Social Media Teams</span>
       <span class="audience-pill">Postgraduates</span>
-      <span class="audience-pill">Leadership Teams</span>
-      <span class="audience-pill">Research Institutions</span>
+      <span class="audience-pill">Research Departments</span>
     </div>
   </div>
 </section>
@@ -398,28 +387,50 @@
 <section id="process">
   <div class="container">
     <p class="section-label">How It Works</p>
-    <h2 class="process-hed">A structured engagement, not an open-ended retainer.</h2>
+    <h2 class="process-hed">Four steps from first conversation to lasting impact.</h2>
     <div class="steps">
+
       <div class="step">
         <span class="step-num">Step 01</span>
-        <h3 class="step-title">Discovery Call</h3>
-        <p class="step-body">A focused 30-minute consultation to understand your communication challenges, goals, and current bottlenecks. Book directly via Calendly.</p>
+        <h3 class="step-title">Free 15-Min Discovery Call</h3>
+        <p class="step-body">
+          A focused, no-obligation conversation to understand your current communication
+          challenge and whether this is the right fit. No pitch, no pressure —
+          just clarity on where you are and what's possible.
+        </p>
+        <a class="step-btn" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book Your Call →</a>
       </div>
+
       <div class="step" style="padding-left:36px">
         <span class="step-num">Step 02</span>
-        <h3 class="step-title">Bespoke Proposal</h3>
-        <p class="step-body">A tailored workshop outline aligned to your context, audience, and desired outcomes. Delivered within 5 working days.</p>
+        <h3 class="step-title">45-Min Deep Dive</h3>
+        <p class="step-body">
+          If there's a fit, we go deeper. This session maps your goals, your audience,
+          your current workflow, and your constraints — so any recommendation is grounded
+          in your reality, not a generic playbook.
+        </p>
       </div>
+
       <div class="step" style="padding-left:36px">
         <span class="step-num">Step 03</span>
-        <h3 class="step-title">Workshop Delivery</h3>
-        <p class="step-body">In-person or remote, built around rigorous frameworks and practical application — with measurable communication outcomes from day one.</p>
+        <h3 class="step-title">Workshop or Audit Delivery</h3>
+        <p class="step-body">
+          The agreed engagement is delivered — whether that's a storytelling workshop for
+          your team, a full media audit, or an AI workflow integration session. Every
+          deliverable is practical, documented, and immediately usable.
+        </p>
       </div>
+
       <div class="step" style="padding-left:36px">
         <span class="step-num">Step 04</span>
-        <h3 class="step-title">Follow-Through</h3>
-        <p class="step-body">Post-workshop resources, framework documentation, and an optional review session to embed the learning into lasting practice.</p>
+        <h3 class="step-title">Ongoing Support or Trusted Referral</h3>
+        <p class="step-body">
+          Where it makes sense, engagements progress into full strategic consultancy.
+          Where a specialist agency is a better fit for your next stage, a warm
+          introduction is made to a trusted partner — so you're never left without a path forward.
+        </p>
       </div>
+
     </div>
   </div>
 </section>
@@ -428,58 +439,42 @@
 <section id="contact">
   <div class="container">
     <div class="contact-grid">
+
       <div class="contact-left">
         <p class="section-label" style="color:rgba(245,245,240,0.3);">Get In Touch</p>
-        <h2 class="contact-hed">Ready to transform how your organisation<em> speaks?</em></h2>
+        <h2 class="contact-hed">The first 15 minutes<em> cost nothing.</em></h2>
         <p class="contact-sub">
-          Book a free 30-minute discovery call directly, or send an enquiry below.
-          All engagements are accepted on a selective basis.
+          Most communication problems look complicated from the inside.
+          A single focused conversation is often enough to see exactly what needs to change —
+          and how to change it without spending more than you already are.
         </p>
         <div class="contact-details">
-          <div class="contact-detail">
-            <span>Format</span>
-            <span>Half-day workshops · Full-day intensives · Bespoke programmes</span>
-          </div>
-          <div class="contact-detail">
-            <span>Clients</span>
-            <span>SMEs · Academic Institutions · Postgraduate Programmes</span>
-          </div>
-          <div class="contact-detail">
-            <span>Delivery</span>
-            <span>In-person and remote engagements worldwide</span>
-          </div>
+          <a class="contact-detail" href="mailto:jay@jaythakkarshow.co.uk">
+            <span class="cd-label">Email</span>
+            <span class="cd-val">jay@jaythakkarshow.co.uk</span>
+          </a>
+          <a class="contact-detail" href="tel:+447464471216">
+            <span class="cd-label">Phone</span>
+            <span class="cd-val">+44 7464 471 216</span>
+          </a>
         </div>
-        <a class="calendly-btn" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">
-          Book a Free 15-Minute Discovery Call →
-        </a>
       </div>
 
       <div class="contact-right">
         <div class="contact-cta-card">
-          <p class="cta-card-label">Start Here</p>
+          <p class="cta-card-label">No Commitment Required</p>
           <h3 class="cta-card-hed">Book a Free<br>15-Minute Discovery Call</h3>
           <p class="cta-card-body">
-            A focused, no-obligation conversation to explore your communication challenges
-            and find out whether a workshop or bespoke programme is the right fit.
-            No hard sell — just clarity.
+            Pick a time that works for you. In 15 minutes you'll know exactly
+            whether there's a fit — and if so, what the next step looks like.
           </p>
           <a class="cta-card-btn" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">
-            Book Your Free Call →
+            Book Your Free Discovery Call →
           </a>
-          <div class="cta-card-divider"></div>
-          <p class="cta-card-reach">Prefer to reach out directly?</p>
-          <div class="cta-contact-items">
-            <a class="cta-contact-item" href="mailto:jay@jaythakkarshow.co.uk">
-              <span class="cta-ci-label">Email</span>
-              <span class="cta-ci-val">jay@jaythakkarshow.co.uk</span>
-            </a>
-            <a class="cta-contact-item" href="tel:+447464471216">
-              <span class="cta-ci-label">Phone</span>
-              <span class="cta-ci-val">+44 7464 471 216</span>
-            </a>
-          </div>
+          <p class="cta-card-note">Slots are limited. Engagements accepted selectively.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -489,7 +484,7 @@
   <div class="container">
     <div class="footer-inner">
       <span>© 2025 Jay Thakkar. All rights reserved.</span>
-      <span>B2B Media &amp; Communication Consultancy</span>
+      <a href="https://open.spotify.com/show/6D1sNFTgaVsQ0PxssP5maA" target="_blank" rel="noopener">🎙 Listen on Spotify ↗</a>
       <a href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Call ↗</a>
     </div>
   </div>
@@ -503,24 +498,10 @@
       links.style.display = 'none';
     } else {
       Object.assign(links.style, {
-        display: 'flex', flexDirection: 'column', position: 'absolute',
-        top: '64px', left: '0', right: '0', background: '#f5f5f0', padding: '20px 5vw'
+        display:'flex', flexDirection:'column', position:'absolute',
+        top:'64px', left:'0', right:'0', background:'#f5f5f0', padding:'20px 5vw'
       });
     }
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    var btn = e.target.querySelector('.form-submit');
-    btn.textContent = 'Enquiry Sent ✓';
-    btn.style.background = 'rgba(255,255,255,0.2)';
-    btn.disabled = true;
-    e.target.reset();
-    setTimeout(function() {
-      btn.textContent = 'Send Enquiry →';
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 4000);
   }
 </script>
 </body>
