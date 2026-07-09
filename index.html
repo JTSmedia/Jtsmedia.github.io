@@ -4,222 +4,207 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Jay Thakkar | Media & Communication Consultancy</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5868716429000402" crossorigin="anonymous"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --black: #080808; --off-white: #f4f4f0; --mid: #6a6a6a;
-    --rule: #d0d0ca; --rule-dark: rgba(255,255,255,0.09);
+    --rule: #d0d0ca; --rule-d: rgba(255,255,255,0.09);
     --ff-serif: 'Georgia','Times New Roman',serif;
     --ff-sans: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-    --max: 1120px; --gap: clamp(72px,10vw,120px); --pad: clamp(22px,5vw,64px);
+    --max: 1120px; --gap: clamp(64px,10vw,112px); --pad: clamp(20px,5vw,64px);
   }
   html { scroll-behavior: smooth; }
   body { background: var(--off-white); color: var(--black); font-family: var(--ff-sans); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
   section { padding: var(--gap) 0; }
   hr.divider { border: none; border-top: 1px solid var(--rule); }
-
-  .eyebrow { font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--mid); display: flex; align-items: center; gap: 14px; margin-bottom: 52px; }
+  .eyebrow { font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--mid); display: flex; align-items: center; gap: 14px; margin-bottom: 48px; }
   .eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
   .eyebrow-d { color: rgba(244,244,240,0.3); }
   .eyebrow-d::after { background: rgba(255,255,255,0.09); }
 
   /* ── NAV ── */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(244,244,240,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule); }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(244,244,240,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
   .nav-logo { font-family: var(--ff-serif); font-size: 1rem; font-weight: normal; color: var(--black); text-decoration: none; }
-  .nav-links { display: flex; gap: 34px; list-style: none; }
-  .nav-links a { font-size: 0.74rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .18s; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 0.73rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .18s; }
   .nav-links a:hover { color: var(--black); }
-  .nav-cta { font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase; background: var(--black); color: var(--off-white); padding: 10px 22px; text-decoration: none; transition: opacity .18s; white-space: nowrap; }
-  .nav-cta:hover { opacity: .82; }
+  .nav-cta { font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; background: var(--black); color: var(--off-white); padding: 9px 20px; text-decoration: none; transition: opacity .18s; white-space: nowrap; }
+  .nav-cta:hover { opacity: .8; }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--black); }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--black); transition: .25s; }
+
+  /* Mobile nav drawer */
+  .mobile-nav { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--off-white); border-bottom: 1px solid var(--rule); z-index: 199; padding: 20px var(--pad) 28px; flex-direction: column; gap: 0; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { display: block; font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--rule); transition: color .15s; }
+  .mobile-nav a:last-child { border-bottom: none; color: var(--black); font-weight: 600; padding-top: 18px; }
+  .mobile-nav a:hover { color: var(--black); }
 
   /* ── HERO ── */
-  #hero { min-height: 100svh; background: var(--black); color: var(--off-white); display: flex; flex-direction: column; justify-content: center; padding: calc(62px + clamp(52px,9vw,100px)) var(--pad) clamp(52px,8vw,90px); position: relative; overflow: hidden; }
-
-  /* Geometric shapes */
+  #hero { min-height: 100svh; background: var(--black); color: var(--off-white); display: flex; flex-direction: column; justify-content: center; padding: calc(60px + clamp(48px,8vw,96px)) var(--pad) clamp(48px,7vw,80px); position: relative; overflow: hidden; }
   .geo { position: absolute; pointer-events: none; }
-  .geo-tri-1 { width: 55vw; max-width: 700px; height: 55vw; max-height: 700px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.032); bottom: 0; right: 0; }
-  .geo-tri-2 { width: 38vw; max-width: 480px; height: 38vw; max-height: 480px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.022); bottom: 40px; right: 40px; }
-  .geo-rect { width: clamp(240px,28vw,380px); height: clamp(320px,40vw,520px); border: 1px solid rgba(255,255,255,0.055); transform: rotate(22deg); right: clamp(60px,10vw,140px); top: clamp(-60px,-6vw,-20px); }
-  .geo-rect-sm { width: clamp(140px,16vw,220px); height: clamp(200px,24vw,320px); border: 1px solid rgba(255,255,255,0.03); transform: rotate(22deg); right: clamp(110px,15vw,210px); top: clamp(-10px,-1vw,20px); }
-
-  .hero-tag { display: inline-flex; align-items: center; gap: 10px; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,244,240,0.36); border: 1px solid rgba(244,244,240,0.11); padding: 7px 16px; margin-bottom: 38px; align-self: flex-start; }
-  .hero-h1 { font-family: var(--ff-serif); font-size: clamp(3rem,8vw,6.4rem); font-weight: normal; line-height: 1.06; letter-spacing: -0.02em; max-width: 760px; margin-bottom: 30px; }
+  .geo-tri-1 { width: 55vw; max-width: 680px; height: 55vw; max-height: 680px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.03); bottom: 0; right: 0; }
+  .geo-tri-2 { width: 36vw; max-width: 460px; height: 36vw; max-height: 460px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.02); bottom: 40px; right: 40px; }
+  .geo-rect { width: clamp(200px,26vw,360px); height: clamp(280px,38vw,500px); border: 1px solid rgba(255,255,255,0.05); transform: rotate(22deg); right: clamp(50px,9vw,130px); top: clamp(-70px,-7vw,-20px); }
+  .geo-rect-sm { width: clamp(120px,15vw,210px); height: clamp(170px,22vw,300px); border: 1px solid rgba(255,255,255,0.03); transform: rotate(22deg); right: clamp(100px,14vw,200px); top: clamp(-10px,0vw,20px); }
+  .hero-tag { display: inline-flex; align-items: center; gap: 10px; font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,244,240,0.36); border: 1px solid rgba(244,244,240,0.11); padding: 6px 14px; margin-bottom: 36px; align-self: flex-start; }
+  .hero-h1 { font-family: var(--ff-serif); font-size: clamp(2.6rem,7.5vw,6.2rem); font-weight: normal; line-height: 1.06; letter-spacing: -0.02em; max-width: 780px; margin-bottom: 28px; }
   .hero-h1 em { font-style: italic; color: rgba(244,244,240,0.4); }
   #cycle-word { display: inline; transition: opacity .32s ease, transform .32s ease; }
   #cycle-word.out { opacity: 0; transform: translateY(-10px); }
-  .hero-sub { font-size: clamp(0.94rem,1.5vw,1.06rem); color: rgba(244,244,240,0.5); line-height: 1.88; max-width: 500px; margin-bottom: 50px; }
+  .hero-sub { font-size: clamp(0.92rem,1.5vw,1.06rem); color: rgba(244,244,240,0.5); line-height: 1.88; max-width: 500px; margin-bottom: 48px; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn { display: inline-block; font-size: 0.74rem; letter-spacing: 0.13em; text-transform: uppercase; text-decoration: none; padding: 15px 32px; transition: .18s; cursor: pointer; border: none; font-family: var(--ff-sans); }
+  .btn { display: inline-block; font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase; text-decoration: none; padding: 14px 28px; transition: .18s; cursor: pointer; border: none; font-family: var(--ff-sans); }
   .btn-w { background: var(--off-white); color: var(--black); }
   .btn-w:hover { background: #ddddd8; }
   .btn-o { background: transparent; color: rgba(244,244,240,0.58); border: 1px solid rgba(244,244,240,0.18); }
   .btn-o:hover { border-color: rgba(244,244,240,0.5); color: var(--off-white); }
-  .btn-b { background: var(--black); color: var(--off-white); }
-  .btn-b:hover { background: #1e1e1e; }
-  .hero-scroll { position: absolute; bottom: 30px; left: var(--pad); display: flex; align-items: center; gap: 12px; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(244,244,240,0.2); }
-  .sline { width: 34px; height: 1px; background: rgba(244,244,240,0.18); animation: grow 2.4s ease-in-out infinite; transform-origin: left; }
+  .hero-scroll { position: absolute; bottom: 28px; left: var(--pad); display: flex; align-items: center; gap: 12px; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(244,244,240,0.2); }
+  .sline { width: 32px; height: 1px; background: rgba(244,244,240,0.18); animation: grow 2.4s ease-in-out infinite; transform-origin: left; }
   @keyframes grow { 0%,100%{opacity:.2;transform:scaleX(.3)} 55%{opacity:.6;transform:scaleX(1)} }
 
   /* ── PROOF STRIP ── */
   #proof { background: var(--black); border-top: 1px solid rgba(255,255,255,0.06); }
   .proof-grid { display: grid; grid-template-columns: repeat(4,1fr); }
-  .proof-cell { padding: 42px 28px; text-align: center; border-right: 1px solid rgba(255,255,255,0.07); }
+  .proof-cell { padding: 38px 22px; text-align: center; border-right: 1px solid rgba(255,255,255,0.07); }
   .proof-cell:last-child { border-right: none; }
-  .proof-n { font-family: var(--ff-serif); font-size: clamp(1.5rem,2.8vw,2.3rem); color: var(--off-white); display: block; margin-bottom: 7px; line-height: 1; }
-  .proof-l { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,244,240,0.34); line-height: 1.55; }
+  .proof-n { font-family: var(--ff-serif); font-size: clamp(1.4rem,2.6vw,2.2rem); color: var(--off-white); display: block; margin-bottom: 7px; line-height: 1; }
+  .proof-l { font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(244,244,240,0.34); line-height: 1.55; }
 
   /* ── ABOUT ── */
-  #about .about-grid { display: grid; grid-template-columns: 5fr 4fr; gap: 80px; align-items: start; }
-  .about-left { position: sticky; top: 80px; }
-  .about-hed { font-family: var(--ff-serif); font-size: clamp(1.9rem,3.5vw,3rem); font-weight: normal; line-height: 1.2; margin-bottom: 26px; }
+  #about .about-grid { display: grid; grid-template-columns: 5fr 4fr; gap: 72px; align-items: start; }
+  .about-left { position: sticky; top: 78px; }
+  .about-hed { font-family: var(--ff-serif); font-size: clamp(1.8rem,3.4vw,2.9rem); font-weight: normal; line-height: 1.2; margin-bottom: 24px; }
   .about-hed em { font-style: italic; color: var(--mid); }
-  .about-body { color: var(--mid); font-size: 0.95rem; line-height: 1.9; margin-bottom: 22px; }
-  .cred { display: flex; gap: 16px; padding: 15px 0; border-top: 1px solid var(--rule); }
+  .about-body { color: var(--mid); font-size: 0.94rem; line-height: 1.9; margin-bottom: 20px; }
+  .cred { display: flex; gap: 16px; padding: 14px 0; border-top: 1px solid var(--rule); }
   .cred:last-child { border-bottom: 1px solid var(--rule); }
   .cred-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--mid); flex-shrink: 0; margin-top: 10px; }
-  .cred-text { font-size: 0.86rem; color: var(--mid); line-height: 1.65; }
+  .cred-text { font-size: 0.85rem; color: var(--mid); line-height: 1.65; }
   .cred-text strong { color: var(--black); font-weight: 600; }
-
-  /* 100k callout */
-  .viral-card { background: var(--black); color: var(--off-white); padding: 38px; margin-bottom: 20px; position: relative; overflow: hidden; }
-  .viral-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 180px; height: 180px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.04); pointer-events: none; }
-  .viral-label { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,244,240,0.32); margin-bottom: 14px; }
-  .viral-stat { font-family: var(--ff-serif); font-size: clamp(3rem,5vw,4.2rem); line-height: 1; color: var(--off-white); margin-bottom: 6px; }
-  .viral-sub { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(244,244,240,0.38); margin-bottom: 18px; }
-  .viral-body { font-size: 0.87rem; color: rgba(244,244,240,0.52); line-height: 1.8; }
+  .viral-card { background: var(--black); color: var(--off-white); padding: 36px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .viral-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 150px; height: 150px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.04); pointer-events: none; }
+  .viral-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,244,240,0.3); margin-bottom: 12px; }
+  .viral-stat { font-family: var(--ff-serif); font-size: clamp(2.6rem,5vw,4rem); line-height: 1; color: var(--off-white); margin-bottom: 4px; }
+  .viral-sub { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,244,240,0.36); margin-bottom: 16px; }
+  .viral-body { font-size: 0.85rem; color: rgba(244,244,240,0.5); line-height: 1.8; }
   .viral-name { font-style: italic; color: rgba(244,244,240,0.75); }
-
   .guest-panel { border: 1px solid var(--rule); }
-  .guest-panel-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); padding: 16px 24px; border-bottom: 1px solid var(--rule); }
-  .guest-row { padding: 16px 24px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+  .guest-panel-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); padding: 14px 22px; border-bottom: 1px solid var(--rule); }
+  .guest-row { padding: 14px 22px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
   .guest-row:last-child { border-bottom: none; }
-  .guest-name { font-weight: 600; font-size: 0.87rem; color: var(--black); }
-  .guest-title { font-size: 0.79rem; color: var(--mid); line-height: 1.5; }
+  .guest-row-name { font-weight: 600; font-size: 0.86rem; color: var(--black); }
+  .guest-badge { font-size: 0.6rem; font-weight: normal; background: var(--black); color: var(--off-white); padding: 2px 8px; margin-left: 8px; letter-spacing: 0.08em; vertical-align: middle; display: inline; }
+  .guest-row-title { font-size: 0.78rem; color: var(--mid); line-height: 1.5; }
 
   /* ── SERVICES ── */
   #services { background: var(--black); color: var(--off-white); }
-  .svc-header { max-width: 580px; margin-bottom: 64px; }
-  .svc-hed { font-family: var(--ff-serif); font-size: clamp(1.9rem,3.8vw,3.2rem); font-weight: normal; line-height: 1.15; margin-bottom: 16px; }
-  .svc-sub { font-size: 0.95rem; color: rgba(244,244,240,0.48); line-height: 1.88; }
+  .svc-header { max-width: 580px; margin-bottom: 56px; }
+  .svc-hed { font-family: var(--ff-serif); font-size: clamp(1.8rem,3.6vw,3rem); font-weight: normal; line-height: 1.15; margin-bottom: 16px; }
+  .svc-sub { font-size: 0.94rem; color: rgba(244,244,240,0.48); line-height: 1.88; }
 
-  /* ── PRICING TABLE ── */
-  .pricing-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 2px; }
-  .pricing-table { min-width: 720px; width: 100%; border-collapse: collapse; }
-
-  /* Plan header cells */
-  .pt-plan { background: rgba(255,255,255,0.03); border: 1px solid var(--rule-dark); padding: 28px 24px; text-align: center; vertical-align: top; }
-  .pt-plan.highlight { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); }
-  .pt-plan-tag { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,244,240,0.3); margin-bottom: 10px; }
-  .pt-plan-tag.popular { color: rgba(244,244,240,0.7); background: rgba(255,255,255,0.09); display: inline-block; padding: 3px 10px; border-radius: 0; }
-  .pt-plan-name { font-family: var(--ff-serif); font-size: 1.15rem; font-weight: normal; color: var(--off-white); margin-bottom: 8px; }
-  .pt-plan-price { font-family: var(--ff-serif); font-size: 1.9rem; color: var(--off-white); line-height: 1; }
-  .pt-plan-period { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,244,240,0.28); margin-top: 5px; }
-  .pt-plan-btn { display: block; margin-top: 22px; font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; background: var(--off-white); color: var(--black); padding: 11px 14px; text-decoration: none; font-family: var(--ff-sans); transition: background .18s; }
-  .pt-plan-btn:hover { background: #ddddd8; }
-  .pt-plan-btn.outline { background: transparent; color: rgba(244,244,240,0.6); border: 1px solid rgba(255,255,255,0.15); }
-  .pt-plan-btn.outline:hover { background: rgba(255,255,255,0.06); color: var(--off-white); }
-
-  /* Feature label column */
-  .pt-feature-head { background: transparent; border: none; padding: 0; width: 200px; min-width: 160px; }
-
-  /* Feature group header */
-  .pt-group td { padding: 20px 16px 8px 0; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,244,240,0.28); border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .pt-group td:not(:first-child) { border-bottom: 1px solid rgba(255,255,255,0.06); padding-left: 24px; }
-
-  /* Feature rows */
-  .pt-row td { padding: 14px 16px 14px 0; font-size: 0.86rem; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
-  .pt-row .feat-label { color: rgba(244,244,240,0.58); font-size: 0.84rem; padding-right: 24px; }
-  .pt-row .feat-val { text-align: center; border-left: 1px solid rgba(255,255,255,0.05); padding: 14px 24px; }
-  .pt-row .feat-val.hl { background: rgba(255,255,255,0.03); }
-  .v-yes { color: var(--off-white); font-size: 1rem; line-height: 1; }
-  .v-no { color: rgba(244,244,240,0.2); font-size: 1.1rem; line-height: 1; }
-  .v-val { color: var(--off-white); font-size: 0.88rem; font-weight: 600; }
-  .v-note { color: rgba(244,244,240,0.5); font-size: 0.78rem; font-weight: normal; }
+  /* Pricing */
+  .pricing-intro { text-align: center; padding: clamp(36px,6vw,64px) clamp(24px,5vw,60px); border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; margin-bottom: 32px; }
+  .pricing-intro::after { content: ''; position: absolute; bottom: 0; right: 0; width: 180px; height: 180px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.04); pointer-events: none; }
+  .pricing-from { font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,244,240,0.3); margin-bottom: 18px; }
+  .pricing-amount { font-family: var(--ff-serif); font-size: clamp(3.6rem,8vw,6rem); color: var(--off-white); line-height: 1; margin-bottom: 6px; }
+  .pricing-period { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,244,240,0.3); margin-bottom: 28px; }
+  .pricing-desc { font-size: 0.93rem; color: rgba(244,244,240,0.5); line-height: 1.85; max-width: 520px; margin: 0 auto 36px; }
+  .pricing-cta { display: inline-block; background: var(--off-white); color: var(--black); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 18px 36px; text-decoration: none; font-family: var(--ff-sans); transition: background .18s; position: relative; z-index: 1; }
+  .pricing-cta:hover { background: #ddddd8; }
+  .pricing-footnote { font-size: 0.74rem; color: rgba(244,244,240,0.26); margin-top: 16px; line-height: 1.7; max-width: 520px; margin-left: auto; margin-right: auto; }
 
   /* ── ACADEMIA ── */
   #academia { background: var(--off-white); }
-  .academia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .academia-hed { font-family: var(--ff-serif); font-size: clamp(1.9rem,3.5vw,3rem); font-weight: normal; line-height: 1.2; margin-bottom: 22px; }
+  .academia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .academia-hed { font-family: var(--ff-serif); font-size: clamp(1.8rem,3.4vw,2.9rem); font-weight: normal; line-height: 1.2; margin-bottom: 20px; }
   .academia-hed em { font-style: italic; color: var(--mid); }
-  .academia-body { color: var(--mid); font-size: 0.95rem; line-height: 1.9; margin-bottom: 36px; }
+  .academia-body { color: var(--mid); font-size: 0.94rem; line-height: 1.9; margin-bottom: 32px; }
   .academia-features { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
-  .af-item { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--rule); align-items: flex-start; }
-  .af-num { font-size: 0.62rem; letter-spacing: 0.16em; color: var(--mid); flex-shrink: 0; margin-top: 3px; min-width: 28px; }
-  .af-body { font-size: 0.88rem; color: var(--mid); line-height: 1.7; }
-  .af-body strong { color: var(--black); font-weight: 600; display: block; margin-bottom: 3px; font-size: 0.92rem; }
-  .academia-note { font-size: 0.8rem; color: var(--mid); line-height: 1.7; padding: 24px; border: 1px solid var(--rule); margin-top: 24px; }
-  .academia-img { background: var(--black); padding: 52px 44px; color: var(--off-white); position: relative; overflow: hidden; }
-  .academia-img::after { content: ''; position: absolute; bottom: 0; right: 0; width: 220px; height: 220px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.05); pointer-events: none; }
-  .ai-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,244,240,0.3); margin-bottom: 24px; }
-  .ai-pull { font-family: var(--ff-serif); font-size: clamp(1.3rem,2.2vw,1.8rem); font-weight: normal; line-height: 1.35; margin-bottom: 24px; }
-  .ai-pull em { font-style: italic; color: rgba(244,244,240,0.45); }
-  .ai-body { font-size: 0.87rem; color: rgba(244,244,240,0.5); line-height: 1.85; margin-bottom: 32px; }
-  .ai-cta { display: inline-block; font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase; background: var(--off-white); color: var(--black); padding: 14px 26px; text-decoration: none; font-family: var(--ff-sans); transition: background .18s; }
-  .ai-cta:hover { background: #ddddd8; }
+  .af-item { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); align-items: flex-start; }
+  .af-num { font-size: 0.6rem; letter-spacing: 0.16em; color: var(--mid); flex-shrink: 0; margin-top: 3px; min-width: 26px; }
+  .af-body { font-size: 0.87rem; color: var(--mid); line-height: 1.7; }
+  .af-body strong { color: var(--black); font-weight: 600; display: block; margin-bottom: 2px; font-size: 0.9rem; }
+  .academia-note { font-size: 0.78rem; color: var(--mid); line-height: 1.72; padding: 22px; border: 1px solid var(--rule); margin-top: 22px; }
+  .academia-card { background: var(--black); padding: 48px 40px; color: var(--off-white); position: relative; overflow: hidden; }
+  .academia-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 200px; height: 200px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.05); pointer-events: none; }
+  .ac-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,244,240,0.3); margin-bottom: 22px; }
+  .ac-pull { font-family: var(--ff-serif); font-size: clamp(1.25rem,2.2vw,1.75rem); font-weight: normal; line-height: 1.35; margin-bottom: 22px; }
+  .ac-pull em { font-style: italic; color: rgba(244,244,240,0.42); }
+  .ac-body { font-size: 0.86rem; color: rgba(244,244,240,0.48); line-height: 1.85; margin-bottom: 32px; }
+  .ac-cta { display: inline-block; font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; background: var(--off-white); color: var(--black); padding: 13px 24px; text-decoration: none; font-family: var(--ff-sans); transition: background .18s; position: relative; z-index: 1; }
+  .ac-cta:hover { background: #ddddd8; }
 
   /* ── PROCESS ── */
   #process { background: var(--off-white); }
-  .process-hed { font-family: var(--ff-serif); font-size: clamp(1.7rem,3.2vw,2.6rem); font-weight: normal; line-height: 1.25; max-width: 520px; margin-bottom: 60px; }
+  .process-hed { font-family: var(--ff-serif); font-size: clamp(1.6rem,3vw,2.5rem); font-weight: normal; line-height: 1.25; max-width: 500px; margin-bottom: 56px; }
   .steps { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--rule); }
-  .step { padding: 36px 28px 36px 0; border-right: 1px solid var(--rule); }
+  .step { padding: 34px 24px 34px 0; border-right: 1px solid var(--rule); }
   .step:last-child { border-right: none; }
-  .step-n { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mid); margin-bottom: 18px; display: block; }
-  .step-title { font-family: var(--ff-serif); font-size: 1rem; font-weight: normal; margin-bottom: 10px; line-height: 1.3; }
-  .step-body { font-size: 0.84rem; color: var(--mid); line-height: 1.78; margin-bottom: 18px; }
-  .step-link { display: inline-block; font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--off-white); background: var(--black); padding: 9px 18px; text-decoration: none; transition: opacity .18s; }
+  .step-n { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; display: block; }
+  .step-title { font-family: var(--ff-serif); font-size: 0.98rem; font-weight: normal; margin-bottom: 9px; line-height: 1.3; }
+  .step-body { font-size: 0.83rem; color: var(--mid); line-height: 1.78; margin-bottom: 16px; }
+  .step-link { display: inline-block; font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--off-white); background: var(--black); padding: 8px 16px; text-decoration: none; transition: opacity .18s; }
   .step-link:hover { opacity: .8; }
 
   /* ── CONTACT ── */
   #contact { background: var(--black); color: var(--off-white); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .contact-hed { font-family: var(--ff-serif); font-size: clamp(2rem,4.5vw,3.6rem); font-weight: normal; line-height: 1.1; margin-bottom: 22px; }
-  .contact-hed em { font-style: italic; color: rgba(244,244,240,0.36); }
-  .contact-sub { font-size: 0.94rem; color: rgba(244,244,240,0.46); line-height: 1.88; margin-bottom: 40px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .contact-hed { font-family: var(--ff-serif); font-size: clamp(1.9rem,4vw,3.4rem); font-weight: normal; line-height: 1.1; margin-bottom: 20px; }
+  .contact-hed em { font-style: italic; color: rgba(244,244,240,0.35); }
+  .contact-sub { font-size: 0.93rem; color: rgba(244,244,240,0.45); line-height: 1.88; margin-bottom: 36px; }
   .contact-links { display: flex; flex-direction: column; gap: 12px; }
-  .clink { display: flex; align-items: baseline; gap: 18px; text-decoration: none; transition: opacity .18s; }
+  .clink { display: flex; align-items: baseline; gap: 16px; text-decoration: none; transition: opacity .18s; }
   .clink:hover { opacity: .7; }
-  .cl-lbl { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,244,240,0.24); min-width: 48px; }
-  .cl-val { font-size: 0.92rem; color: rgba(244,244,240,0.66); }
-  .cta-card { border: 1px solid rgba(255,255,255,0.1); padding: 52px 44px; text-align: center; position: relative; overflow: hidden; }
-  .cta-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 160px; height: 160px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.04); pointer-events: none; }
-  .cta-lbl { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,244,240,0.26); margin-bottom: 20px; }
-  .cta-hed { font-family: var(--ff-serif); font-size: clamp(1.6rem,2.4vw,2.2rem); font-weight: normal; line-height: 1.2; margin-bottom: 16px; }
-  .cta-body { font-size: 0.87rem; color: rgba(244,244,240,0.44); line-height: 1.85; margin-bottom: 36px; max-width: 300px; margin-left: auto; margin-right: auto; }
-  .cta-btn { display: block; background: var(--off-white); color: var(--black); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 19px 26px; text-decoration: none; font-family: var(--ff-sans); transition: background .18s; position: relative; z-index: 1; }
+  .cl-lbl { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,244,240,0.24); min-width: 46px; }
+  .cl-val { font-size: 0.9rem; color: rgba(244,244,240,0.65); }
+  .cta-card { border: 1px solid rgba(255,255,255,0.1); padding: 48px 40px; text-align: center; position: relative; overflow: hidden; }
+  .cta-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 150px; height: 150px; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: rgba(255,255,255,0.04); pointer-events: none; }
+  .cta-lbl { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,244,240,0.26); margin-bottom: 18px; }
+  .cta-hed { font-family: var(--ff-serif); font-size: clamp(1.5rem,2.4vw,2.1rem); font-weight: normal; line-height: 1.2; margin-bottom: 14px; }
+  .cta-body { font-size: 0.86rem; color: rgba(244,244,240,0.43); line-height: 1.85; margin-bottom: 32px; max-width: 290px; margin-left: auto; margin-right: auto; }
+  .cta-btn { display: block; background: var(--off-white); color: var(--black); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 18px 24px; text-decoration: none; font-family: var(--ff-sans); transition: background .18s; position: relative; z-index: 1; }
   .cta-btn:hover { background: #ddddd8; }
-  .cta-note { margin-top: 14px; font-size: 0.68rem; color: rgba(244,244,240,0.18); }
+  .cta-note { margin-top: 12px; font-size: 0.66rem; color: rgba(244,244,240,0.18); }
 
   /* ── FOOTER ── */
-  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.07); padding: 28px 0; }
-  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 0.72rem; letter-spacing: 0.07em; color: rgba(244,244,240,0.22); }
-  .footer-links { display: flex; gap: 28px; }
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.07); padding: 26px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 0.7rem; letter-spacing: 0.07em; color: rgba(244,244,240,0.22); }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
   .footer-links a, .footer-inner a { color: rgba(244,244,240,0.32); text-decoration: none; transition: color .18s; }
   .footer-links a:hover, .footer-inner a:hover { color: rgba(244,244,240,0.7); }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
+  /* ── MOBILE ── */
+  @media (max-width: 860px) {
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
+    .geo-rect, .geo-rect-sm { display: none; }
     .proof-grid { grid-template-columns: repeat(2,1fr); }
     .proof-cell { border-bottom: 1px solid rgba(255,255,255,0.07); }
-    #about .about-grid, .academia-grid, .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+    .proof-cell:nth-child(2) { border-right: none; }
+    .proof-cell:nth-child(3) { border-bottom: none; }
+    .proof-cell:nth-child(4) { border-right: none; border-bottom: none; }
+    #about .about-grid, .academia-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .about-left { position: static; }
+    .pricing-tiers { grid-template-columns: repeat(2,1fr); }
     .steps { grid-template-columns: 1fr 1fr; }
     .step:nth-child(2) { border-right: none; }
     .step:nth-child(3) { border-right: 1px solid var(--rule); }
-    .geo-rect, .geo-rect-sm { display: none; }
   }
-  @media (max-width: 560px) {
+  @media (max-width: 520px) {
+    .hero-h1 { font-size: clamp(2.2rem,9vw,3rem); }
+    .pricing-tiers { grid-template-columns: 1fr 1fr; }
+    .pricing-intro { padding: 36px 24px; }
     .steps { grid-template-columns: 1fr; }
-    .step { border-right: none !important; border-bottom: 1px solid var(--rule); padding: 28px 0; }
+    .step { border-right: none !important; border-bottom: 1px solid var(--rule); padding: 26px 0; }
     .step:last-child { border-bottom: none; }
-    .proof-grid { grid-template-columns: 1fr 1fr; }
     .footer-links { flex-direction: column; gap: 10px; }
-    .hero-h1 { font-size: clamp(2.4rem,8vw,3.4rem); }
+    .academia-card { padding: 36px 28px; }
+    .contact-grid { gap: 48px; }
+    .cta-card { padding: 36px 26px; }
   }
 </style>
 </head>
@@ -236,20 +221,27 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a class="nav-cta" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Discovery Call</a>
-    <button class="hamburger" aria-label="Menu" onclick="toggleMenu(this)">
+    <button class="hamburger" aria-label="Toggle menu" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeNav()">About</a>
+  <a href="#services" onclick="closeNav()">For Founders</a>
+  <a href="#academia" onclick="closeNav()">For Academia</a>
+  <a href="#contact" onclick="closeNav()">Contact</a>
+  <a href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Discovery Call →</a>
+</div>
+
 <!-- HERO -->
 <section id="hero">
-  <!-- Geometric shapes -->
   <div class="geo geo-tri-1"></div>
   <div class="geo geo-tri-2"></div>
   <div class="geo geo-rect"></div>
   <div class="geo geo-rect-sm"></div>
-
   <span class="hero-tag">Media &amp; Communication Consultancy</span>
   <h1 class="hero-h1">
     One Conversation.<br>
@@ -268,7 +260,7 @@
   <div class="hero-scroll"><div class="sline"></div><span>Scroll</span></div>
 </section>
 
-<!-- PROOF STRIP -->
+<!-- PROOF -->
 <div id="proof">
   <div class="proof-grid">
     <div class="proof-cell"><span class="proof-n">6</span><span class="proof-l">Years Broadcasting</span></div>
@@ -291,17 +283,15 @@
           <strong>top 100 across three countries (2023)</strong>. World-class guests. Real reach. Zero overhead.
         </p>
         <p class="about-body">
-          The lesson is simple: most organisations are already sitting on the content, the credibility,
-          and the audience. What is missing is the framework to extract it, shape it, and put it in front
-          of the right people — consistently, without inflating the budget. That is what this consultancy delivers.
+          Most organisations are already sitting on the content, the credibility, and the audience.
+          What is missing is the framework to extract it, shape it, and put it in front of the right people —
+          consistently, without inflating the budget. That is what this consultancy delivers.
         </p>
         <div class="cred"><div class="cred-dot"></div><p class="cred-text"><strong>Founder, Jay Thakkar Show</strong> — Globally ranked podcast built without a production budget. Strategy and storytelling outperform spend at every level.</p></div>
         <div class="cred"><div class="cred-dot"></div><p class="cred-text"><strong>Framework Over Budget</strong> — Every recommendation is grounded in what works at minimal cost: free AI tools, lean workflows, and a clear editorial strategy built around your voice.</p></div>
         <div class="cred"><div class="cred-dot"></div><p class="cred-text"><strong>MA Philosophy, University of Liverpool</strong> — Academic rigour applied to real-world communication — from research dissemination to founder positioning and brand narrative.</p></div>
       </div>
-
-      <div class="about-right">
-        <!-- 100k Callout -->
+      <div>
         <div class="viral-card">
           <p class="viral-label">Standout Episode Performance</p>
           <div class="viral-stat">100k+</div>
@@ -310,28 +300,26 @@
             The episode featuring <span class="viral-name">Prof. Julius Lipner</span> — Emeritus Professor of
             Hinduism &amp; Comparative Religion at the University of Cambridge — generated over
             <strong style="color:var(--off-white)">100,000 views within 15 days</strong> of publishing,
-            with no paid promotion. A single conversation, the right framework, and an audience that was ready.
-            This is what good content strategy looks like in practice.
+            with no paid promotion. One conversation. The right framework. An audience that was ready.
           </p>
         </div>
-
         <div class="guest-panel">
           <p class="guest-panel-label">Notable Guests on the Jay Thakkar Show</p>
           <div class="guest-row">
-            <div class="guest-name">Prof. Julius Lipner <span style="font-size:0.7rem;font-weight:normal;color:var(--mid);margin-left:8px;">100k+ views · 15 days</span></div>
-            <div class="guest-title">Emeritus Professor of Hinduism &amp; Comparative Religion, University of Cambridge</div>
+            <div class="guest-row-name">Prof. Julius Lipner <span class="guest-badge">100k+ views · 15 days</span></div>
+            <div class="guest-row-title">Emeritus Professor of Hinduism &amp; Comparative Religion, University of Cambridge</div>
           </div>
           <div class="guest-row">
-            <div class="guest-name">Eric Kaplan</div>
-            <div class="guest-title">Executive Producer, The Big Bang Theory · Harvard-trained Philosopher &amp; Author</div>
+            <div class="guest-row-name">Eric Kaplan</div>
+            <div class="guest-row-title">Executive Producer, The Big Bang Theory · Harvard-trained Philosopher &amp; Author</div>
           </div>
           <div class="guest-row">
-            <div class="guest-name">Dr Radhakrishnan Pillai</div>
-            <div class="guest-title">Author, Corporate Chanakya · Management Thinker &amp; Vedic Scholar</div>
+            <div class="guest-row-name">Dr Radhakrishnan Pillai</div>
+            <div class="guest-row-title">Author, Corporate Chanakya · Management Thinker &amp; Vedic Scholar</div>
           </div>
           <div class="guest-row">
-            <div class="guest-name" style="color:var(--mid);font-weight:normal;">And Many More</div>
-            <div class="guest-title">Global academics, bestselling authors &amp; senior industry leaders</div>
+            <div class="guest-row-name" style="color:var(--mid);font-weight:normal;">And Many More</div>
+            <div class="guest-row-title">Global academics, bestselling authors &amp; senior industry leaders</div>
           </div>
         </div>
       </div>
@@ -341,7 +329,7 @@
 
 <hr class="divider"/>
 
-<!-- SERVICES — FOUNDERS -->
+<!-- SERVICES -->
 <section id="services">
   <div class="wrap">
     <p class="eyebrow eyebrow-d">For Founders, Consultants &amp; Coaches</p>
@@ -349,150 +337,24 @@
       <h2 class="svc-hed">Turn one conversation into<br>a month of thought leadership.</h2>
       <p class="svc-sub">
         You have the expertise. What you need is a system that extracts it, shapes it, and publishes it
-        consistently — without consuming your time. Pick the plan that fits where you are right now.
+        consistently — without consuming your time. Every package starts with a discovery call
+        so we understand exactly what you need before we begin.
       </p>
     </div>
 
-    <div class="pricing-wrap">
-      <table class="pricing-table" cellspacing="0" cellpadding="0">
-        <thead>
-          <tr>
-            <th class="pt-feature-head"></th>
-            <th class="pt-plan">
-              <p class="pt-plan-tag">Starter</p>
-              <p class="pt-plan-name">Basic</p>
-              <p class="pt-plan-price">£250</p>
-              <p class="pt-plan-period">per package</p>
-              <a class="pt-plan-btn outline" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Get Started</a>
-            </th>
-            <th class="pt-plan">
-              <p class="pt-plan-tag popular">Most Popular</p>
-              <p class="pt-plan-name">Pro</p>
-              <p class="pt-plan-price">£500</p>
-              <p class="pt-plan-period">per package</p>
-              <a class="pt-plan-btn" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Get Started</a>
-            </th>
-            <th class="pt-plan highlight">
-              <p class="pt-plan-tag">Best Value</p>
-              <p class="pt-plan-name">Premium</p>
-              <p class="pt-plan-price">£750</p>
-              <p class="pt-plan-period">per package</p>
-              <a class="pt-plan-btn" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Get Started</a>
-            </th>
-            <th class="pt-plan">
-              <p class="pt-plan-tag">Full Service</p>
-              <p class="pt-plan-name">Retainer</p>
-              <p class="pt-plan-price">£1,500</p>
-              <p class="pt-plan-period">per month</p>
-              <a class="pt-plan-btn outline" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Let's Talk</a>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Group: Recording -->
-          <tr class="pt-group">
-            <td colspan="5">Recording</td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">Format</td>
-            <td class="feat-val"><span class="v-note">Online only</span></td>
-            <td class="feat-val"><span class="v-note">In-person / Online</span></td>
-            <td class="feat-val hl"><span class="v-note">In-person / Online</span></td>
-            <td class="feat-val"><span class="v-note">In-person / Online</span></td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">Studio Hire</td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-note">Additional if req.</span></td>
-            <td class="feat-val hl"><span class="v-note">Additional if req.</span></td>
-            <td class="feat-val"><span class="v-note">Additional if req.</span></td>
-          </tr>
-
-          <!-- Group: Strategy -->
-          <tr class="pt-group">
-            <td colspan="5">Strategy</td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">Strategy Call</td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-val">1</span></td>
-            <td class="feat-val hl"><span class="v-val">1</span></td>
-            <td class="feat-val"><span class="v-val">2</span></td>
-          </tr>
-
-          <!-- Group: Content -->
-          <tr class="pt-group">
-            <td colspan="5">Content</td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">Short-Form Video Clips</td>
-            <td class="feat-val"><span class="v-val">5</span></td>
-            <td class="feat-val"><span class="v-val">10</span></td>
-            <td class="feat-val hl"><span class="v-val">15</span></td>
-            <td class="feat-val"><span class="v-val">20</span></td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">LinkedIn Posts</td>
-            <td class="feat-val"><span class="v-val">3</span></td>
-            <td class="feat-val"><span class="v-val">5</span></td>
-            <td class="feat-val hl"><span class="v-val">8</span></td>
-            <td class="feat-val"><span class="v-val">12</span></td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">Newsletter</td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val hl"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-yes">✓</span></td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">Content Calendar</td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-note">Assistance</span></td>
-            <td class="feat-val hl"><span class="v-note">Assistance</span></td>
-            <td class="feat-val"><span class="v-note">Fully Managed</span></td>
-          </tr>
-
-          <!-- Group: AI Integration -->
-          <tr class="pt-group">
-            <td colspan="5">AI Integration</td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">Manus AI <span class="v-note">(Instagram)</span></td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val hl"><span class="v-yes">✓</span> <span class="v-note">Free ver.</span></td>
-            <td class="feat-val"><span class="v-yes">✓</span> <span class="v-note">Free ver.</span></td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">Claude AI</td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val hl"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-yes">✓</span> <span class="v-note">Free ver.</span></td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">ElevenLabs</td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val hl"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-yes">✓</span> <span class="v-note">Free ver.</span></td>
-          </tr>
-          <tr class="pt-row">
-            <td class="feat-label">AI-Generated Videos <span class="v-note">(up to 90s)</span></td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-no">—</span></td>
-            <td class="feat-val hl"><span class="v-no">—</span></td>
-            <td class="feat-val"><span class="v-val">2</span> <span class="v-note">included</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="pricing-intro">
+      <p class="pricing-from">One package. One price.</p>
+      <div class="pricing-amount">£500</div>
+      <p class="pricing-period">per content package</p>
+      <p class="pricing-desc">
+        One recorded conversation at your location or online. Transformed into a full month of
+        thought leadership content — 10 short-form video clips, 5 LinkedIn posts, a content
+        calendar, and a repurposing strategy. Everything you need to stay visible and credible,
+        without consuming your time.
+      </p>
+      <a class="pricing-cta" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Free Discovery Call →</a>
+      <p class="pricing-footnote">Includes a 1-hour strategic content call. Studio hire, where required, is billed separately. Ongoing retainer and bespoke engagements available — pricing discussed on the discovery call.</p>
     </div>
-
-    <p style="font-size:0.76rem;color:rgba(244,244,240,0.3);margin-top:18px;line-height:1.7;">
-      All packages include a recorded conversation conducted at your location or online. Studio hire, where required, is billed separately.
-      AI integrations use free-tier tools guided and configured by Jay. Discovery call required before any engagement begins.
-    </p>
   </div>
 </section>
 
@@ -502,12 +364,11 @@
     <p class="eyebrow">For Universities &amp; Academia</p>
     <div class="academia-grid">
       <div>
-        <h2 class="academia-hed">Communicate the value<br>of your work — <em>without losing its rigour.</em></h2>
+        <h2 class="academia-hed">Communicate the value of your work —<br><em>without losing its rigour.</em></h2>
         <p class="academia-body">
           Academic expertise is among the most underutilised communication assets in existence.
           Workshops and training programmes designed to help researchers, departments, and postgraduates
-          translate complex thinking into narratives that resonate beyond the institution — and into
-          the public, media, and funding conversations that matter.
+          translate complex thinking into narratives that resonate far beyond the institution.
         </p>
         <div class="academia-features">
           <div class="af-item">
@@ -516,11 +377,11 @@
           </div>
           <div class="af-item">
             <span class="af-num">02</span>
-            <div class="af-body"><strong>AI Workflow Integration</strong>Practical training on embedding free AI tools into your department's communication workflow — producing more, consistently, without increasing cost or headcount.</div>
+            <div class="af-body"><strong>AI Workflow Integration</strong>Practical training on embedding free AI tools into your department's communication workflow — more output, no additional cost or headcount.</div>
           </div>
           <div class="af-item">
             <span class="af-num">03</span>
-            <div class="af-body"><strong>Media &amp; Communication Audit</strong>A review of how your institution currently communicates its research, followed by a clear, actionable plan for increasing public and professional reach.</div>
+            <div class="af-body"><strong>Media &amp; Communication Audit</strong>A review of how your institution communicates its research, followed by a clear, actionable plan for increasing public and professional reach.</div>
           </div>
           <div class="af-item">
             <span class="af-num">04</span>
@@ -528,21 +389,20 @@
           </div>
         </div>
         <div class="academia-note">
-          Pricing for academic engagements is scoped following the discovery call, based on format, duration, and team size.
-          All sessions available in-person or remotely, worldwide.
+          Pricing for academic engagements is scoped following the discovery call, based on format, duration, and team size. Available in-person or remotely, worldwide.
         </div>
       </div>
       <div>
-        <div class="academia-img">
-          <p class="ai-label">Why This Matters Now</p>
-          <h3 class="ai-pull">Research that cannot be communicated<br><em>is research that cannot be funded.</em></h3>
-          <p class="ai-body">
+        <div class="academia-card">
+          <p class="ac-label">Why This Matters Now</p>
+          <h3 class="ac-pull">Research that cannot be communicated<br><em>is research that cannot be funded.</em></h3>
+          <p class="ac-body">
             The ability to tell a compelling story about your work is no longer optional — it determines
-            visibility, funding, public trust, and institutional relevance. Storytelling is not a soft
-            skill. It is the architecture through which ideas gain traction. These workshops exist to
-            make that architecture second nature for your team.
+            visibility, funding, public trust, and institutional relevance. Storytelling is not a soft skill.
+            It is the architecture through which ideas gain traction. These workshops make that architecture
+            second nature for your entire team.
           </p>
-          <a class="ai-cta" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Free Discovery Call →</a>
+          <a class="ac-cta" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Free Discovery Call →</a>
         </div>
       </div>
     </div>
@@ -560,23 +420,23 @@
       <div class="step">
         <span class="step-n">Step 01</span>
         <h3 class="step-title">Free 15-Min Discovery Call</h3>
-        <p class="step-body">A focused, no-obligation conversation to understand your challenge and confirm there is a genuine fit. No pitch. Just clarity on what is possible and what it takes.</p>
+        <p class="step-body">A focused, no-obligation conversation to understand your challenge and confirm there is a genuine fit. No pitch. Just clarity on what is possible.</p>
         <a class="step-link" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book Your Call →</a>
       </div>
-      <div class="step" style="padding-left:26px">
+      <div class="step" style="padding-left:24px">
         <span class="step-n">Step 02</span>
         <h3 class="step-title">45-Min Deep Dive</h3>
-        <p class="step-body">We map your goals, audience, existing workflow, and constraints in detail. Every recommendation that follows is built on your reality — not a generic template.</p>
+        <p class="step-body">We map your goals, audience, workflow, and constraints. Everything that follows is built on your reality — not a generic template.</p>
       </div>
-      <div class="step" style="padding-left:26px">
+      <div class="step" style="padding-left:24px">
         <span class="step-n">Step 03</span>
         <h3 class="step-title">Delivery</h3>
-        <p class="step-body">Your agreed package, workshop, or audit is delivered — on time, fully documented, and immediately actionable. Every output is built to be used, not filed away.</p>
+        <p class="step-body">Your agreed package, workshop, or audit is delivered — on time, fully documented, and immediately actionable. Every output is built to be used.</p>
       </div>
-      <div class="step" style="padding-left:26px">
+      <div class="step" style="padding-left:24px">
         <span class="step-n">Step 04</span>
         <h3 class="step-title">Ongoing Support or Referral</h3>
-        <p class="step-body">Engagements can progress into full consultancy. Where a specialist agency is the better fit, a warm introduction to a trusted partner ensures you always have a clear path forward.</p>
+        <p class="step-body">Engagements can progress into full consultancy. Where a specialist is a better fit, a warm introduction to a trusted partner ensures a clear path forward.</p>
       </div>
     </div>
   </div>
@@ -590,9 +450,9 @@
         <p class="eyebrow eyebrow-d">Get In Touch</p>
         <h2 class="contact-hed">The first 15 minutes<br><em>cost nothing.</em></h2>
         <p class="contact-sub">
-          Most communication problems look complex from the inside. A single focused conversation
-          is often enough to see clearly what needs to change — and how to do it without spending
-          more than you already are.
+          Most communication problems look complex from the inside. A single focused conversation is
+          often enough to see clearly what needs to change — and how to do it without spending more
+          than you already are.
         </p>
         <div class="contact-links">
           <a class="clink" href="mailto:jay@jaythakkarshow.co.uk">
@@ -608,7 +468,7 @@
       <div class="cta-card">
         <p class="cta-lbl">No Commitment Required</p>
         <h3 class="cta-hed">Book a Free<br>15-Minute Discovery Call</h3>
-        <p class="cta-body">Pick a time that works for you. In 15 minutes you will know exactly whether there is a fit — and if so, what the next step looks like.</p>
+        <p class="cta-body">Pick a time that works. In 15 minutes you will know exactly whether there is a fit — and if so, what the next step looks like.</p>
         <a class="cta-btn" href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book Your Free Discovery Call →</a>
         <p class="cta-note">Engagements accepted on a selective basis.</p>
       </div>
@@ -620,7 +480,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <span>© 2026 Jay Thakkar. All rights reserved.</span>
+      <span>© 2025 Jay Thakkar. All rights reserved.</span>
       <div class="footer-links">
         <a href="https://open.spotify.com/show/6D1sNFTgaVsQ0PxssP5maA" target="_blank" rel="noopener">🎙 Jay Thakkar Show on Spotify ↗</a>
         <a href="https://calendly.com/jaythakkarshow/discovery-call?month=2026-06" target="_blank" rel="noopener">Book a Call ↗</a>
@@ -630,33 +490,30 @@
 </footer>
 
 <script>
-  /* Word cycle */
-  const words = ['Authority', 'Credibility', 'Reach', 'Content'];
+  /* Cycle word */
+  const words = ['Authority','Credibility','Reach','Content'];
   let idx = 0;
   const el = document.getElementById('cycle-word');
   setInterval(() => {
     el.classList.add('out');
-    setTimeout(() => {
-      idx = (idx + 1) % words.length;
-      el.textContent = words[idx];
-      el.classList.remove('out');
-    }, 340);
+    setTimeout(() => { idx = (idx + 1) % words.length; el.textContent = words[idx]; el.classList.remove('out'); }, 340);
   }, 2600);
 
   /* Mobile nav */
-  function toggleMenu(btn) {
-    var links = btn.closest('nav').querySelector('.nav-links');
-    var open = links.style.display === 'flex';
-    if (open) {
-      links.style.display = 'none';
-    } else {
-      Object.assign(links.style, {
-        display:'flex', flexDirection:'column', position:'absolute',
-        top:'62px', left:'0', right:'0', background:'rgba(244,244,240,0.98)',
-        padding:'22px var(--pad)', borderBottom:'1px solid #d0d0ca', gap:'20px'
-      });
-    }
+  function toggleNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
   }
+  function closeNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+
+  /* Close nav on outside click */
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mobileNav');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !e.target.closest('.hamburger')) {
+      nav.classList.remove('open');
+    }
+  });
 </script>
 </body>
 </html>
